@@ -1,54 +1,96 @@
-/* Remove all default spacing */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-}
-
-/* Make sure the image takes up the full screen width & height */
 .homepage-container {
-  background: url('../images/supra-homepage.png') no-repeat center center fixed;
-  background-size: cover;  /* ensures the image covers full screen */
-  width: 100vw;            /* full viewport width */
-  height: 100vh;           /* full viewport height */
+  height: 100vh;
+  width: 100%;
+  background: url('../images/supra-homepage.png') no-repeat center center/cover;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-/* Optional — make text pop */
-.homepage-title {
-  color: white;
-  font-size: 2.5rem;
-  font-weight: bold;
   text-align: center;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
-}
-/* Remove all default spacing */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
+  color: white;
+  overflow: hidden;
+  transition: background-position 0.2s ease-out;
 }
 
-/* Make sure the image takes up the full screen width & height */
-.homepage-container {
-  background: url('../images/supra-homepage.png') no-repeat center center fixed;
-  background-size: cover;  /* ensures the image covers full screen */
-  width: 100vw;            /* full viewport width */
-  height: 100vh;           /* full viewport height */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.hero-heading {
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtext {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-buttons {
   display: flex;
-  align-items: center;
+  gap: 1rem;
   justify-content: center;
 }
 
-/* Optional — make text pop */
-.homepage-title {
+.outline-btn {
+  background: transparent;
+  border: 2px solid white;
   color: white;
-  font-size: 2.5rem;
-  font-weight: bold;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.outline-btn:hover {
+  background-color: white;
+  color: black;
+  transform: scale(1.05);
+}
+
+/* --- Scroll Sections --- */
+.info-section {
+  min-height: 100vh;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem;
+}
+
+.info-section.alt {
+  background-color: #f8f8f8;
+}
+
+.info-content {
+  max-width: 800px;
   text-align: center;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.info-content h2 {
+  font-size: 2.5rem;
+  color: #e4002b;
+  margin-bottom: 1rem;
+}
+
+.info-content p {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.7;
+}
+
+.footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: #fff;
+  color: #777;
+  font-size: 0.9rem;
 }
