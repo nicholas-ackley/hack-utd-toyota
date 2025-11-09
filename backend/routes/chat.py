@@ -1,8 +1,9 @@
 from fastapi import APIRouter, Request
 from openai import OpenAI
-import requests, os
+import requests, os, json
 from dotenv import load_dotenv
 from pathlib import Path
+import time
 
 # ✅ Load environment
 env_path = Path(__file__).resolve().parents[1] / ".env"
@@ -67,3 +68,52 @@ async def chat(request: Request):
 
     ai_response = completion.choices[0].message.content
     return {"response": ai_response}
+
+@router.post("/save-answers")
+async def save_answers(request: Request):
+    """Save user questionnaire answers to responses.json"""
+    try:
+        data = await request.json()
+        user_id = data.get("userId")
+        answers = data.get("answers")
+
+        # Path to responses.json
+        responses_file = Path(__file__).resolve().parents[1] / "responses.json"
+
+        # Read existing responses
+        try:
+            with open(responses_file, 'r') as f:
+                responses = json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            responses = []
+
+        # Create new response entry
+        new_response = {
+            "userId": user_id,
+            "answers": answers,
+            "timestamp": int(time.time() * 1000)  # Current timestamp in milliseconds
+        }
+
+        # Add to responses array
+        responses.append(new_response)
+
+        # Write back to file
+        with open(responses_file, 'w') as f:
+            json.dump(responses, f, indent=2)
+
+        print("📤 Saved answers from user:", user_id)
+        print("📊 Answers:", answers)
+        print("💾 Total responses saved:", len(responses))
+
+        return {
+            "success": True,
+            "message": "Answers saved successfully",
+            "userId": user_id,
+            "totalResponses": len(responses)
+        }
+    except Exception as e:
+        print("❌ Error saving answers:", str(e))
+        return {
+            "success": False,
+            "error": str(e)
+        }

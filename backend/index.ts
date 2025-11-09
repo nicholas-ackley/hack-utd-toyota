@@ -1,5 +1,4 @@
 import express from "express";
-import cors from "cors";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -8,46 +7,21 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = 5000;
+const PORT = 5050;
 
-app.use(
-  cors({
-    origin: [/^http:\/\/localhost:\d+$/], // allow all localhost ports
-    methods: ["GET", "POST"],
-  })
-);
+// ✅ Full CORS fix
+app.use((req, res, next) => {
+  const allowedOrigin = "http://localhost:5173";
+  res.setHeader("Access-Control-Allow-Origin", allowedOrigin);
+  res.setHeader("Vary", "Origin"); // required for proper caching
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
 
+  if (req.method === "OPTIONS") {
+    return res.status(204).end();
+  }
+  next();
+});
 
 app.use(express.json());
-
-const responsesPath = path.join(__dirname, "responses.json");
-console.log("📁 Saving responses to:", responsesPath);
-
-
-if (!fs.existsSync(responsesPath)) {
-  fs.writeFileSync(responsesPath, "[]");
-}
-
-app.post("/api/save-answers", (req, res) => {
-  const data = req.body;
-  console.log("📩 Received data:", data);
-
-  if (!data || !data.answers) {
-    return res.status(400).json({ message: "Invalid data" });
-  }
-
-  const file = JSON.parse(fs.readFileSync(responsesPath, "utf-8"));
-  file.push({ ...data, timestamp: Date.now() });
-
-  fs.writeFileSync(responsesPath, JSON.stringify(file, null, 2));
-
-  res.json({ message: "✅ Answers saved successfully" });
-});
-
-app.get("/api/responses", (req, res) => {
-  const data = JSON.parse(fs.readFileSync(responsesPath, "utf-8"));
-  res.json(data);
-});
-app.get("/favicon.ico", (req, res) => res.status(204));
-
-app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));

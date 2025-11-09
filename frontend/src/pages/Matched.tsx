@@ -83,7 +83,7 @@ const Matched: React.FC = () => {
   // ✅ Save answers to backend
   const saveAnswers = async (answers: Record<string, number | string>) => {
     try {
-      const response = await fetch("http://localhost:5000/api/save-answers", {
+      const response = await fetch("http://localhost:8000/api/save-answers", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -109,7 +109,7 @@ const handleNext = async () => {
     console.log("✅ Final structured answers:", answers);
 
     try {
-      const response = await fetch("http://localhost:5000/api/save-answers", {
+      const response = await fetch("http://localhost:8000/api/save-answers", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

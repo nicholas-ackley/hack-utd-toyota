@@ -11,5 +11,27 @@
       "bodyType": "Truck"
     },
     "timestamp": 1762686075704
+  },
+  {
+    "userId": "test-user-123",
+    "answers": {
+      "maxPrice": 29500,
+      "speedPreference": 8.2,
+      "sizePreference": "SUV"
+    },
+    "timestamp": 1762701844669
+  },
+  {
+    "userId": "guest-7580",
+    "answers": {
+      "maxPrice": 47000,
+      "speedPreference": 8.6,
+      "sizePreference": "Truck",
+      "householdSize": "Yes",
+      "commuteDistance": "Yes",
+      "fuelType": "Electric",
+      "bodyType": "Van"
+    },
+    "timestamp": 1762701873181
   }
 ]
