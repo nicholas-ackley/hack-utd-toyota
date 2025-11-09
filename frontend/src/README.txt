@@ -22,3 +22,10 @@ frontend@0.0.0 C:\Users\nicho\Desktop\hack-utd-toyota\frontend
 ├── typescript-eslint@8.46.3
 ├── typescript@5.9.3
 └── vite@7.2.2
+
+
+npm i react-router-dom
+npm i react-icons
+npm i aos
+npm install lucide-react
+npm install motion
