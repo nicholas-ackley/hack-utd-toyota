@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
-import { addCarToDatabase } from './firebaseFunctions';
+import { seedToyotaMockCatalog } from './firebaseFunctions';
 import Navbar from './navbar/Navbar';
 import Homepage from './pages/Homepage';
 import Models from './pages/Models';
@@ -13,7 +13,7 @@ function App() {
   useEffect(() => {
     if (hasAddedRef.current) return;
     hasAddedRef.current = true;
-    addCarToDatabase(); // runs once when the app loads
+    seedToyotaMockCatalog(); // runs once when the app loads - seeds all 18 Toyota cars
   }, []);
 
 
