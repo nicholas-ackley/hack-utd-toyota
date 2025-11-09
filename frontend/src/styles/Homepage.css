@@ -45,11 +45,13 @@
   font-size: 1rem;
   font-weight: 550;
   padding: 0.8rem 2rem;
+  border: none;
   border-radius: 30px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 .outline-btn2 {
+border: white 2px solid;
   background: transparent;
   color: white;
   font-size: 1rem;
@@ -288,3 +290,398 @@ button {
 
 
 
+/* --- FIND YOUR PERFECT TOYOTA SECTION --- */
+.perfect-section {
+  background-color: #fff;
+  padding: 6rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.perfect-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1300px;
+  width: 100%;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+/* Left side */
+.perfect-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.perfect-heading {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #2c2c2c;
+  margin-bottom: 1rem;
+}
+
+.perfect-description {
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+/* Stats */
+.perfect-stats {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.stat-item h3 {
+  color: #e4002b;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.2rem;
+}
+
+.stat-item p {
+  color: #666;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* Right side */
+.perfect-card {
+  flex: 1;
+  min-width: 320px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.perfect-card:hover {
+  transform: translateY(-4px);
+}
+
+.perfect-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Buttons below image */
+.perfect-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  background-color: white;
+  border-top: 1px solid #eee;
+}
+
+.car-btn {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  padding: 0.9rem 2rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.car-btn.red {
+  background-color: #e4002b;
+  color: white;
+  box-shadow: 0 5px 15px rgba(228, 0, 43, 0.3);
+}
+
+.car-btn.red:hover {
+  background-color: #c90026;
+}
+
+.car-btn.white {
+  background-color: #fff;
+  color: #222;
+  border: 2px solid #ddd;
+}
+
+.car-btn.white:hover {
+  border-color: #e4002b;
+  color: #e4002b;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .perfect-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .perfect-stats {
+    justify-content: center;
+  }
+}
+/* --- SAFETY SECTION --- */
+.safety-section {
+  background-color: #fff;
+  padding: 6rem 2rem;
+}
+
+.safety-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.safety-text {
+  flex: 1;
+  min-width: 320px;
+}
+
+.safety-text h2 {
+  font-size: 2.8rem;
+  color: #e4002b;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.safety-text p {
+  color: #333;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.safety-ratings {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.rating-box {
+  background: #f8f8f8;
+  padding: 1.5rem 2rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  flex: 1;
+}
+
+.rating-box h3 {
+  color: #e4002b;
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 0.4rem;
+}
+
+.rating-box p {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* Right image */
+.safety-image {
+  flex: 1;
+  min-width: 320px;
+  text-align: center;
+}
+
+.safety-image img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.safety-image img:hover {
+  transform: scale(1.03);
+}
+
+/* --- FEATURES GRID --- */
+.safety-features {
+  background-color: #f9f9f9;
+  padding: 6rem 2rem;
+  text-align: center;
+}
+
+.safety-features h2 {
+  font-size: 2.6rem;
+  color: #e4002b;
+  margin-bottom: 3rem;
+  font-weight: 800;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 2.5rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  text-align: left;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+}
+
+.feature-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.feature-card h3 {
+  font-size: 1.4rem;
+  color: #222;
+  font-weight: 700;
+  margin: 1rem 1.5rem 0.5rem;
+}
+
+.feature-card p {
+  color: #555;
+  font-size: 0.95rem;
+  margin: 0 1.5rem 1.5rem;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .safety-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .safety-ratings {
+    justify-content: center;
+  }
+
+  .safety-image img {
+    max-width: 90%;
+  }
+}
+
+
+
+/* FOOTer */
+/* --- TOYOTA FOOTER --- */
+.toyota-footer {
+  background-color: #111;
+  color: #fff;
+  padding: 4rem 2rem 2rem;
+  font-family: var(--font-body);
+}
+
+.footer-container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* Columns Layout */
+.footer-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-col h4 {
+  color: #e4002b;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 0.6rem;
+}
+
+.footer-col ul li a {
+  text-decoration: none;
+  color: #ccc;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+  color: #fff;
+}
+
+/* Divider line */
+.footer-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  margin-bottom: 2rem;
+}
+
+/* Bottom section */
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.2rem;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.footer-socials a {
+  color: #ccc;
+  font-size: 1.1rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.footer-socials a:hover {
+  color: #e4002b;
+  transform: scale(1.15);
+}
+
+.footer-legal {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.footer-legal a {
+  color: #e4002b;
+  text-decoration: none;
+  margin: 0 0.3rem;
+}
+
+.footer-legal a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-columns {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+}
