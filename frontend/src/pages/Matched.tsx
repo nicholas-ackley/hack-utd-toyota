@@ -1,23 +1,20 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // ✅ import this
-import Navbar from "../navbar/Navbar";
 import "../styles/Matched.css";
+import { getTop3CompatibleCars } from "../firebaseFunctions";
+import type { UserPreferences } from "../firebaseFunctions";
 
 interface Question {
   id: number;
   key: string;
   text: string;
-  type: "slider" | "binary" | "multiple";
-  min?: number;
-  max?: number;
-  step?: number;
+  min: number;
+  max: number;
+  step: number;
   labels: string[];
-  unit?: string;
+  unit?: string; // optional (e.g., "$", "s")
 }
 
 const Matched: React.FC = () => {
-  const navigate = useNavigate(); // ✅ initialize navigation
-
   const questions: Question[] = [
     {
       id: 1,
@@ -28,7 +25,6 @@ const Matched: React.FC = () => {
       step: 500,
       labels: ["$20k", "$40k", "$60k+"],
       unit: "$",
-      type: "slider",
     },
     {
       id: 2,
@@ -39,98 +35,272 @@ const Matched: React.FC = () => {
       step: 0.1,
       labels: ["6s", "8s", "10s+"],
       unit: "s",
-      type: "slider",
     },
     {
       id: 3,
       key: "sizePreference",
       text: "What car size fits you best?",
-      labels: ["Compact", "Midsize", "SUV", "Truck"],
-      type: "multiple",
+      min: 1,
+      max: 3,
+      step: 1,
+      labels: ["Compact", "Midsize", "Large"],
     },
     {
       id: 4,
       key: "householdSize",
       text: "Is your household larger than 2 people?",
+      min: 0,
+      max: 1,
+      step: 1,
       labels: ["No", "Yes"],
-      type: "binary",
     },
     {
       id: 5,
       key: "commuteDistance",
       text: "Do you usually commute more than 5 miles daily?",
+      min: 0,
+      max: 1,
+      step: 1,
       labels: ["No", "Yes"],
-      type: "binary",
     },
     {
       id: 6,
       key: "fuelType",
       text: "What’s your preferred fuel type?",
-      labels: ["Gasoline", "Hybrid", "Electric"],
-      type: "multiple",
+      min: 0,
+      max: 1,
+      step: 1,
+      labels: ["Gasoline", "Electric"],
     },
     {
       id: 7,
       key: "bodyType",
       text: "What vehicle style matches your lifestyle?",
+      min: 0,
+      max: 3,
+      step: 1,
       labels: ["Sedan", "Wagon", "Truck", "Van"],
-      type: "multiple",
     },
   ];
 
   const [current, setCurrent] = useState(0);
-  const [answers, setAnswers] = useState<{ [key: string]: number | string }>({});
+  const [answers, setAnswers] = useState<{ [key: string]: number }>({});
+  const [recommendations, setRecommendations] = useState<Array<any>>([]);
+  const [loading, setLoading] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [quizCompleted, setQuizCompleted] = useState(false);
+  
+  // Safety check
+  if (!questions || questions.length === 0) {
+    return <div>Error: No questions available</div>;
+  }
+  
   const q = questions[current];
-  const currentValue = answers[q.key] ?? q.min ?? 0;
+  if (!q) {
+    return <div>Error: Invalid question index</div>;
+  }
+  
+  const currentValue = answers[q.key] ?? q.min;
 
-  const handleSelect = (value: string | number) => {
-    setAnswers({ ...answers, [q.key]: value });
+  const handleSlide = (value: number) => {
+    const updatedAnswers = { ...answers, [q.key]: value };
+    setAnswers(updatedAnswers);
+  };
+
+  // Initialize all answers with default values if not already set
+  const getAllAnswersWithDefaults = (inputAnswers: { [key: string]: number }): { [key: string]: number } => {
+    const allAnswers = { ...inputAnswers };
+    questions.forEach(question => {
+      // Check if the key exists in the object (handles both undefined and missing keys)
+      if (!(question.key in allAnswers)) {
+        allAnswers[question.key] = question.min;
+      }
+    });
+    return allAnswers;
+  };
+
+  const convertAnswersToPreferences = (answers: { [key: string]: number }): UserPreferences => {
+    // Ensure all answers have default values
+    const completeAnswers = getAllAnswersWithDefaults(answers);
+    
+    // Convert numeric answers to correct format
+    const bodyTypeMap: { [key: number]: 'regcar' | 'stwagon' | 'truck' | 'van' } = {
+      0: 'regcar',
+      1: 'stwagon',
+      2: 'truck',
+      3: 'van'
+    };
+    
+    const fuelTypeMap: { [key: number]: 'gasoline' | 'electric' } = {
+      0: 'gasoline',
+      1: 'electric'
+    };
+
+    return {
+      bodyType: bodyTypeMap[completeAnswers.bodyType] || undefined,
+      fuelType: fuelTypeMap[completeAnswers.fuelType] || undefined,
+      maxPrice: completeAnswers.maxPrice,
+      speedPreference: completeAnswers.speedPreference,
+      sizePreference: completeAnswers.sizePreference as 1 | 2 | 3,
+      householdSize: completeAnswers.householdSize as 0 | 1,
+      commuteDistance: completeAnswers.commuteDistance as 0 | 1,
+    };
   };
 
   const handleNext = async () => {
+    // Always save the current question's answer (even if it's the default)
+    const currentAnswer = answers[q.key] ?? q.min;
+    const updatedAnswers = { ...answers, [q.key]: currentAnswer };
+    setAnswers(updatedAnswers);
+    
     if (current < questions.length - 1) {
       setCurrent(current + 1);
     } else {
-      console.log("✅ Final structured answers:", answers);
-
+      // Quiz is complete - fetch recommendations
+      setQuizCompleted(true);
+      setLoading(true);
+      
       try {
-        const response = await fetch("http://localhost:8000/api/get-recommendation", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            userId: "guest-" + Math.floor(Math.random() * 10000),
-            answers,
-          }),
-        });
-
-        const data = await response.json();
-        console.log("📤 Backend response:", data);
-
-        // ✅ Redirect to /results and pass the backend response
-        navigate("/results", { state: { result: data } });
-      } catch (error) {
-        console.error("❌ Failed to fetch recommendation:", error);
-        alert("Something went wrong fetching your car match.");
+        // Convert answers to preferences format (using updated answers)
+        const preferences = convertAnswersToPreferences(updatedAnswers);
+        console.log("✅ Final preferences:", preferences);
+        
+        // Get top 3 compatible cars
+        const topCars = await getTop3CompatibleCars(preferences);
+        
+        if (!topCars || topCars.length === 0) {
+          alert("No cars found matching your preferences. Please try adjusting your answers.");
+          setQuizCompleted(false);
+        } else {
+          setRecommendations(topCars);
+          console.log("✅ Top 3 compatible cars:", topCars);
+        }
+      } catch (error: any) {
+        console.error("Error getting recommendations:", error);
+        const errorMessage = error?.message || "Unknown error occurred";
+        // Clean up error message for user display
+        let userMessage = errorMessage;
+        if (errorMessage.includes("composite index") || errorMessage.includes("failed-precondition")) {
+          userMessage = "Database query error occurred. Please try again.";
+        }
+        alert(`Sorry, there was an error finding your perfect match: ${userMessage}. Please try again.`);
+        setQuizCompleted(false);
+      } finally {
+        setLoading(false);
       }
     }
   };
 
+  // Show recommendations screen after quiz is completed
+  if (quizCompleted) {
+    return (
+      <>
+        <div className="matched-container">
+          <div className="quiz-card" style={{ maxWidth: '900px', width: '100%' }}>
+            <h2 className="question-number">Your Perfect Match</h2>
+            <h1 className="question-text">Top {recommendations.length} Recommendations</h1>
+            
+            {loading ? (
+              <div className="recommendations-loading">
+                <p>Finding your perfect match...</p>
+              </div>
+            ) : recommendations.length > 0 ? (
+              <>
+                <div className="recommendations-list">
+                  {recommendations.map((car, index) => (
+                    <div key={car.id} className="recommendation-card">
+                      <div className="recommendation-rank">#{index + 1}</div>
+                      {car.imageUrl && (
+                        <div 
+                          className="recommendation-image"
+                          onClick={() => setSelectedImage(car.imageUrl!)}
+                        >
+                          <img 
+                            src={car.imageUrl} 
+                            alt={car.name || `${car.model} ${car.trim}`}
+                            loading="lazy"
+                          />
+                          <div className="image-overlay">
+                            <span className="zoom-hint">Click to enlarge</span>
+                          </div>
+                        </div>
+                      )}
+                      <div className="recommendation-content">
+                        <h3>{car.name || `${car.model} ${car.trim}`}</h3>
+                        <p className="recommendation-details">
+                          {car.year} • {car.type} • {car.fuel}
+                        </p>
+                        <div className="recommendation-specs">
+                          <span>${car.price.toLocaleString()}</span>
+                          <span>{car.zeroToSixtySec}s 0-60</span>
+                          <span>Size: {car.size}</span>
+                        </div>
+                        <div className="recommendation-score">
+                          Match Score: {car.utilityScore.toFixed(2)}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <button 
+                  className="next-btn" 
+                  onClick={() => {
+                    setRecommendations([]);
+                    setCurrent(0);
+                    setAnswers({});
+                    setQuizCompleted(false);
+                  }}
+                  style={{ marginTop: '2rem' }}
+                >
+                  Start Over
+                </button>
+              </>
+            ) : (
+              <div className="recommendations-loading">
+                <p>No matches found. Please try again.</p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Image Modal */}
+        {selectedImage && (
+          <div 
+            className="image-modal" 
+            onClick={() => setSelectedImage(null)}
+          >
+            <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
+              <button 
+                className="image-modal-close"
+                onClick={() => setSelectedImage(null)}
+              >
+                ×
+              </button>
+              <img src={selectedImage} alt="Car detail" />
+            </div>
+          </div>
+        )}
+      </>
+    );
+  }
+
+  // Show quiz questions
   return (
     <>
-      <Navbar />
       <div className="matched-container">
-        <div className="quiz-card">
-          <h2 className="question-number">
-            Question {current + 1} of {questions.length}
-          </h2>
-          <h1 className="question-text">{q.text}</h1>
+        <div className="quiz-section">
+          <div className="quiz-card">
+            <h2 className="question-number">
+              Question {current + 1} of {questions.length}
+            </h2>
+            <h1 className="question-text">{q.text}</h1>
 
-          {/* --- Slider --- */}
-          {q.type === "slider" && (
+            {/* Slider */}
             <div className="slider-container">
               <div className="slider-value">
                 {q.unit === "$"
-                  ? `${q.unit}${Number(currentValue).toLocaleString()}`
+                  ? `${q.unit}${currentValue.toLocaleString()}`
                   : q.unit
                   ? `${currentValue}${q.unit}`
                   : currentValue}
@@ -141,8 +311,8 @@ const Matched: React.FC = () => {
                 min={q.min}
                 max={q.max}
                 step={q.step}
-                value={Number(currentValue)}
-                onChange={(e) => handleSelect(Number(e.target.value))}
+                value={currentValue}
+                onChange={(e) => handleSlide(Number(e.target.value))}
                 className="slider"
               />
 
@@ -154,37 +324,42 @@ const Matched: React.FC = () => {
                 ))}
               </div>
             </div>
-          )}
 
-          {/* --- Multiple & Binary --- */}
-          {(q.type === "binary" || q.type === "multiple") && (
-            <div className="choice-container">
-              {q.labels.map((label) => (
-                <button
-                  key={label}
-                  onClick={() => handleSelect(label)}
-                  className={`choice-btn ${
-                    answers[q.key] === label ? "selected" : ""
-                  }`}
-                >
-                  {label}
-                </button>
-              ))}
+            <button 
+              className="next-btn" 
+              onClick={handleNext}
+              disabled={loading}
+            >
+              {loading ? "Finding Your Match..." : current === questions.length - 1 ? "Finish" : "Next"}
+            </button>
+
+            <div className="progress-bar">
+              <div
+                className="progress-fill"
+                style={{ width: `${((current + 1) / questions.length) * 100}%` }}
+              />
             </div>
-          )}
-
-          <button className="next-btn" onClick={handleNext}>
-            {current === questions.length - 1 ? "Finish" : "Next Question"}
-          </button>
-
-          <div className="progress-bar">
-            <div
-              className="progress-fill"
-              style={{ width: `${((current + 1) / questions.length) * 100}%` }}
-            />
           </div>
         </div>
       </div>
+
+      {/* Image Modal - outside container for proper overlay */}
+      {selectedImage && (
+        <div 
+          className="image-modal" 
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button 
+              className="image-modal-close"
+              onClick={() => setSelectedImage(null)}
+            >
+              ×
+            </button>
+            <img src={selectedImage} alt="Car detail" />
+          </div>
+        </div>
+      )}
     </>
   );
 };

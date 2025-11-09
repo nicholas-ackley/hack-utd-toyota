@@ -1,10 +1,25 @@
 .matched-container {
   display: flex;
+  gap: 2rem;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   min-height: 90vh;
   background: linear-gradient(to bottom right, #f8f9fb, #ffffff);
   padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.quiz-section {
+  flex: 1;
+  max-width: 600px;
+}
+
+.recommendations-section {
+  flex: 1;
+  max-width: 500px;
+  position: sticky;
+  top: 2rem;
 }
 
 .quiz-card {
@@ -16,6 +31,11 @@
   width: 100%;
   text-align: center;
   transition: all 0.4s ease;
+}
+
+.quiz-card:has(.recommendations-list) {
+  max-width: 900px;
+  text-align: left;
 }
 
 .question-number {
@@ -145,129 +165,338 @@
   font-size: 0.9rem;
   color: #666;
 }
-.matched-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: #fafafa;
-  padding: 2rem;
-}
 
-.quiz-card {
-  background: #fff;
+/* Recommendations display */
+.recommendations-card {
+  background: #ffffff;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  padding: 3rem 4rem;
-  max-width: 650px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  padding: 2rem;
   width: 100%;
-  text-align: center;
 }
 
-.question-number {
-  font-size: 1rem;
+.recommendations-title {
+  font-size: 1.5rem;
   font-weight: 600;
-  color: #666;
+  color: #1c1c1e;
   margin-bottom: 0.5rem;
 }
 
-.question-text {
-  font-size: 1.7rem;
-  font-weight: 700;
-  color: #111;
-  margin-bottom: 2.2rem;
-  line-height: 1.4;
+.recommendations-subtitle {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
 }
 
-/* Binary button layout fix */
-.binary-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem; /* adds even space between Yes and No */
-  margin-top: 1.5rem;
-  margin-bottom: 2.5rem; /* pushes buttons away from "Next" */
+.recommendations-loading,
+.recommendations-placeholder {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  padding: 3rem 2rem;
+  text-align: center;
+  color: #6b7280;
 }
 
-.binary-btn {
-  background-color: #f5f5f5;
-  border: 2px solid #ddd;
-  border-radius: 10px;
-  padding: 0.9rem 2.2rem;
-  font-size: 1.1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.binary-btn:hover {
-  background-color: #eb0a1e;
-  color: white;
-  border-color: #eb0a1e;
-}
-
-.binary-btn.selected {
-  background-color: #eb0a1e;
-  color: white;
-  border-color: #eb0a1e;
-}
-
-/* Center Next button properly */
-.next-btn {
-  margin-top: 1rem;
-  padding: 0.8rem 2.5rem;
+.recommendations-loading p,
+.recommendations-placeholder p {
+  margin: 0;
   font-size: 1rem;
-  border: none;
-  border-radius: 40px;
-  background: #111;
-  color: white;
-  cursor: pointer;
-  transition: background 0.3s ease;
 }
 
-.next-btn:hover {
-  background: #333;
-}
-
-/* Progress bar */
-.progress-bar {
-  height: 6px;
-  background: #eee;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-top: 2.5rem;
-}
-
-.progress-fill {
-  height: 100%;
-  background: #eb0a1e;
-  width: 0%;
-  transition: width 0.4s ease-in-out;
-}
-.choice-container {
+.recommendations-list {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 0;
+  width: 100%;
+}
+
+.quiz-card:has(.recommendations-list) .recommendations-list {
+  margin-top: 2rem;
+}
+
+.recommendation-card {
+  display: flex;
+  align-items: flex-start;
   gap: 1rem;
-  margin-top: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 1rem;
+  border: 2px solid #e5e7eb;
+  transition: all 0.3s;
 }
 
-.choice-btn {
-  padding: 10px 20px;
-  background-color: #f0f0f0;
-  border: 2px solid transparent;
-  border-radius: 10px;
+.quiz-card:has(.recommendations-list) .recommendation-card {
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.recommendation-card:hover {
+  border-color: #d80015;
+  box-shadow: 0 4px 12px rgba(216, 0, 21, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Car Image Styles */
+.recommendation-image {
+  position: relative;
+  width: 120px;
+  height: 90px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
   cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: 1rem;
+  background: #e5e7eb;
+  transition: all 0.3s ease;
 }
 
-.choice-btn:hover {
-  background-color: #e5e5e5;
+.quiz-card:has(.recommendations-list) .recommendation-image {
+  width: 200px;
+  height: 150px;
 }
 
-.choice-btn.selected {
-  background-color: #d21f3c;
+.recommendation-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.recommendation-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.recommendation-image:hover img {
+  transform: scale(1.1);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+  pointer-events: none;
+}
+
+.recommendation-image:hover .image-overlay {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.zoom-hint {
   color: white;
-  border-color: #b91c1c;
+  font-size: 0.85rem;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.recommendation-image:hover .zoom-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Image Modal */
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+  cursor: pointer;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.image-modal-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  cursor: default;
+  animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.image-modal-content img {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.image-modal-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.image-modal-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .matched-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .quiz-section,
+  .recommendations-section {
+    max-width: 100%;
+  }
+
+  .recommendations-section {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .matched-container {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .quiz-card,
+  .recommendations-card {
+    padding: 1.5rem;
+  }
+
+  .recommendation-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .recommendation-image {
+    width: 100%;
+    height: 200px;
+  }
+
+  .recommendation-content {
+    text-align: center;
+  }
+
+  .recommendation-content h3 {
+    font-size: 1.2rem;
+  }
+
+  .image-modal-content {
+    max-width: 95vw;
+  }
+
+  .image-modal-close {
+    top: -50px;
+    right: -10px;
+  }
+}
+
+.recommendation-rank {
+  background: #d80015;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.recommendation-content {
+  flex: 1;
+  text-align: left;
+}
+
+.recommendation-content h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  color: #1c1c1e;
+}
+
+.quiz-card:has(.recommendations-list) .recommendation-content h3 {
+  font-size: 1.5rem;
+}
+
+.recommendation-details {
+  margin: 0 0 1rem 0;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.recommendation-specs {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.recommendation-specs span {
+  background: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.recommendation-score {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.next-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
