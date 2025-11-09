@@ -7,6 +7,7 @@ import Stock from '../images/stock.jpg';
 import { FaBolt, FaShieldAlt, FaMedal } from "react-icons/fa";
 import ChatWidget from '../components/chatbot/ChatWidget';
 import Matched from './Matched';
+import Navbar from '../navbar/Navbar';
 const Homepage: React.FC = () => {
   const [offsetY, setOffsetY] = useState(0);
   const navigate = useNavigate();
@@ -38,6 +39,7 @@ useEffect(() => {
   return (
     <>
       {/* Hero Section */}
+      <Navbar />
       <section
         className="homepage-container"
         style={{
@@ -84,7 +86,7 @@ useEffect(() => {
 
       </section>
       <section className="info-section">
-        <div className="info-content">
+        <div className="info-content" data-aos="fade-up" data-aos-delay="100">
           <h2>Find Your Toyota</h2>
           <p>
             Every Toyota is engineered with precision and crafted to deliver
@@ -97,19 +99,20 @@ useEffect(() => {
 
 <section className="car-container">
   <div className="car-box">
-    <img className="stock-photo" src={Stock} alt="Toyota Showcase" />
+    <img className="stock-photo " data-aos="fade-up" data-aos-delay="100" src={Stock} alt="Toyota Showcase" />
 
     {/* Buttons now sit BELOW the image */}
     <div className="car-buttons">
-      <button className="car-btn" onClick={()=> navigate("/matched")}>Match Me</button>
-      <button className="car-btn outline">Compare</button>
+      <button className="car-btn" data-aos="zoom-in" onClick={()=> navigate("/matched")}>Match Me</button>
+      <button className="car-btn outline" data-aos="zoom-in">Compare</button>
     </div>
+    
   </div>
 </section>
 
 
       <section className="info-section alt">
-        <div className="info-content">
+        <div className="info-content" data-aos="fade-up" data-aos-delay="100">
           <h2>Safety You Can Count On</h2>
           <p>
             Equipped with Toyota Safety Sense™, our cars use advanced technology

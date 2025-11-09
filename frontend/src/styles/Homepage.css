@@ -126,7 +126,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: .15rem ;
+  padding: .5rem ;
   
 }
 
@@ -137,6 +137,7 @@
 .info-content {
   max-width: 800px;
   text-align: center;
+  margin-bottom: 22rem;
 }
 
 .info-content h2 {
@@ -156,9 +157,12 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 4rem 0;
+padding: 4rem 15;
   background-color: #fff;
+
+  /* 👇 add this */
 }
+
 
 .car-box {
   display: flex;
@@ -166,6 +170,7 @@
   align-items: center;
   width: 80%;
   max-width: 1000px;
+  position: relative;
 }
 
 .stock-photo {
@@ -195,6 +200,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
+  margin-top: 150px;
 }
 
 .car-btn:hover {

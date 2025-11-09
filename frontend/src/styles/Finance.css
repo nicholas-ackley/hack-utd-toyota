@@ -1,0 +1,158 @@
+/* Hero Section */
+.finance-hero {
+  text-align: center;
+  padding: 6rem 1rem;
+  background: linear-gradient(to bottom, #f9fafb, #ffffff);
+}
+.finance-hero h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #1a1a1a;
+}
+.finance-hero h1 span {
+  color: #eb0a1e;
+}
+.finance-hero p {
+  color: #555;
+  font-size: 1.2rem;
+  margin: 1rem auto 2rem;
+  max-width: 600px;
+}
+.cta-btn {
+  background-color: #eb0a1e;
+  color: white;
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+.cta-btn:hover {
+  background-color: #c00818;
+}
+
+/* Benefits */
+.finance-benefits {
+  padding: 4rem 1rem;
+  background-color: #fff;
+}
+.benefits-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.benefit-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: left;
+  transition: box-shadow 0.3s;
+}
+.benefit-card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+.benefit-icon {
+  background: #fff5f5;
+  border-radius: 12px;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  color: #eb0a1e;
+}
+
+/* Calculator */
+.finance-calculator {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2rem;
+  background: #f7f8f9;
+  padding: 4rem 1rem;
+}
+.calc-left,
+.calc-right {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+.calc-right {
+  background-color: #eb0a1e;
+  color: white;
+}
+.calc-payment {
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 1rem 0;
+}
+.calc-note {
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+.loan-breakdown {
+  background: white;
+  color: #1a1a1a;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+}
+.loan-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.4rem 0;
+}
+.loan-item.total {
+  font-weight: 700;
+}
+
+/* Offers */
+.finance-offers {
+  padding: 5rem 1rem;
+  background: #fff;
+  text-align: center;
+}
+.finance-offers h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+.offers-container {
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2rem;
+}
+.offer-card {
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: left;
+}
+.offer-card.white {
+  background: white;
+  border: 1px solid #e5e7eb;
+}
+.offer-card.red {
+  background: linear-gradient(135deg, #eb0a1e, #c00818);
+  color: white;
+}
+.offer-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+}
+.offer-card li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+.check-icon {
+  color: #22c55e;
+}
+.tag {
+  background: #eb0a1e;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
