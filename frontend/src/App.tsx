@@ -5,6 +5,7 @@ import Navbar from './navbar/Navbar';
 import Homepage from './pages/Homepage';
 import Models from './pages/Models';
 import Preowned from './pages/Preowned';
+import ChatWidget from './components/chatbot/ChatWidget';
 
 function App() {
 
@@ -18,6 +19,8 @@ function App() {
 
 
   return (
+    <>
+    <ChatWidget />
     <Router>
       <Navbar />
       <Routes>
@@ -26,6 +29,7 @@ function App() {
         <Route path="/preowned" element={<Preowned />} />
       </Routes>
     </Router>
+  </>
   );
 }
 

@@ -4,6 +4,7 @@ import "aos/dist/aos.css";
 import '../styles/Homepage.css';
 import Stock from '../images/stock.jpg';
 import { FaBolt, FaShieldAlt, FaMedal } from "react-icons/fa";
+import ChatWidget from '../components/chatbot/ChatWidget';
 const Homepage: React.FC = () => {
   const [offsetY, setOffsetY] = useState(0);
 
