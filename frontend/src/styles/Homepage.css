@@ -1,3 +1,5 @@
+/* MAIN HOME PAGE */
+
 .homepage-container {
   height: 100vh;
   width: 100%;
@@ -62,13 +64,70 @@
 }
 
 /* --- Scroll Sections --- */
+/* STATS */
+.stats-container {
+  width: 100%;
+  background-color: #f8f8f8;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 350px;
+  padding: 4rem 2rem;
+  flex-wrap: wrap;
+}
+
+/* Each stat card */
+.stats-box {
+  text-align: center;
+  max-width: 200px;
+}
+
+/* Red icon background */
+.stats-box .icon {
+  width: 55px;
+  height: 55px;
+  background-color: #e4002b;
+  border-radius: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 1rem auto;
+  transition: transform 0.3s ease;
+}
+
+/* React icon inside */
+.stats-icon {
+  color: white;
+  font-size: 2rem;
+}
+
+/* Title under icon (scoped, not global h3) */
+.stats-title {
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* Description text (scoped) */
+.stats-desc {
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.stats-box:hover .icon {
+  transform: scale(1.1);
+}
+
+
 .info-section {
-  min-height: 100vh;
+  min-height: 80vh;
   background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6rem 2rem;
+  padding: .15rem ;
+  
 }
 
 .info-section.alt {
@@ -91,6 +150,70 @@
   color: #333;
   line-height: 1.7;
 }
+.car-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 4rem 0;
+  background-color: #fff;
+}
+
+.car-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  max-width: 1000px;
+}
+
+.stock-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* Button group BELOW image */
+.car-buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* Toyota-style buttons */
+.car-btn {
+  background: #e4002b; /* Toyota red */
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 1rem 3rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.car-btn:hover {
+  background: #c00022;
+  transform: scale(1.05);
+}
+
+/* Outline version */
+.car-btn.outline {
+  background: transparent;
+  border: 2px solid #e4002b;
+  color: #e4002b;
+}
+
+.car-btn.outline:hover {
+  background: #e4002b;
+  color: white;
+  transform: scale(1.05);
+}
 
 .footer {
   text-align: center;
@@ -98,6 +221,28 @@
   background-color: #fff;
   color: #777;
   font-size: 0.9rem;
+}
+
+.car-container{
+  width: 100%;
+  height: 500px;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -250px; 
+}
+.box{
+  width: 1000px;
+  height: 500px;
+  background-color: blue;
+  border-radius: 10%;
+}
+.stock-photo{
+  width: 1000px;
+  height: 500px;
+  border-radius: 10%;
+  object-fit: cover;
 }
 
 
@@ -130,3 +275,8 @@ button {
   font-weight: 600;
   letter-spacing: 0.3px;
 }
+
+
+
+
+

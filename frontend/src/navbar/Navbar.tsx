@@ -14,13 +14,13 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
-      <div className="nav-left">
-        <h2 className="logo">TOYOTA</h2>
-        <ul className="nav-links">
-          <li><Link to="/">Models</Link></li>
-          <li><Link to="/preowned">Pre-Owned</Link></li>
-          <li><Link to="/electric">Electric</Link></li>
-          <li><Link to="/about">About</Link></li>
+      <div className="nav-left ">
+        <h2 className="logo" data-aos="fade-down" data-aos-delay="0">TOYOTA</h2>
+        <ul className="nav-links" data-aos="fade-down" data-aos-delay="0">
+          <li><Link to="/" data-aos="fade-down" data-aos-delay="100">Models</Link></li>
+          <li><Link to="/preowned" data-aos="fade-down" data-aos-delay="200">Pre-Owned</Link></li>
+          <li><Link to="/electric" data-aos="fade-down" data-aos-delay="300">Electric</Link></li>
+          <li><Link to="/about" data-aos="fade-down" data-aos-delay="400">About</Link></li>
         </ul>
       </div>
 

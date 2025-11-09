@@ -1,9 +1,31 @@
 import React, { useEffect, useState } from 'react';
+import AOS from "aos";
+import "aos/dist/aos.css";
 import '../styles/Homepage.css';
-
+import Stock from '../images/stock.jpg';
+import { FaBolt, FaShieldAlt, FaMedal } from "react-icons/fa";
 const Homepage: React.FC = () => {
   const [offsetY, setOffsetY] = useState(0);
 
+
+
+  // AOS LIBRARY USEFFECT
+useEffect(() => {
+
+  window.scrollTo(0, 0);
+}, []);
+
+
+  useEffect(() => {
+  AOS.init({
+    duration: 500, 
+    once: true,     
+    easing: "ease-out-cubic",
+  });
+}, []);
+
+
+// Scroll event listener
   useEffect(() => {
     const handleScroll = () => setOffsetY(window.scrollY);
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -19,7 +41,7 @@ const Homepage: React.FC = () => {
           backgroundPositionY: `${offsetY * 0.4}px`, // parallax movement
         }}
       >
-        <div className="hero-content">
+        <div className="hero-content" data-aos="fade-up" data-aos-delay="0">
           <h1 className="hero-heading">Let's Go Places</h1>
           <p className="hero-subtext">
             Discover the latest in Toyota innovation and design.
@@ -32,9 +54,35 @@ const Homepage: React.FC = () => {
       </section>
 
       {/* Scroll Content */}
+ <section className="stats-container"data-aos="fade-up" data-aos-delay="100" >
+  <div className="stats-box">
+    <div className="icon">
+      <FaBolt className="stats-icon" />
+    </div>
+    <h3>Hybrid & Electric</h3>
+    <p>Leading the way in sustainable mobility</p>
+  </div>
+
+  <div className="stats-box"data-aos="fade-up" data-aos-delay="100">
+    <div className="icon" >
+      <FaShieldAlt className="stats-icon" />
+    </div>
+    <h3>Toyota Safety Sense</h3>
+    <p>Advanced safety features standard</p>
+  </div>
+
+  <div className="stats-box" data-aos="fade-up" data-aos-delay="100">
+    <div className="icon" >
+      <FaMedal className="stats-icon" />
+    </div>
+    <h3>Quality & Reliability</h3>
+    <p>Trusted by millions worldwide</p>
+  </div>
+
+      </section>
       <section className="info-section">
         <div className="info-content">
-          <h2>Innovation Meets Performance</h2>
+          <h2>Find Your Toyota</h2>
           <p>
             Every Toyota is engineered with precision and crafted to deliver
             exceptional performance, comfort, and reliability. Whether you’re
@@ -43,6 +91,19 @@ const Homepage: React.FC = () => {
           </p>
         </div>
       </section>
+
+<section className="car-container">
+  <div className="car-box">
+    <img className="stock-photo" src={Stock} alt="Toyota Showcase" />
+
+    {/* Buttons now sit BELOW the image */}
+    <div className="car-buttons">
+      <button className="car-btn">Match Me</button>
+      <button className="car-btn outline">Compare</button>
+    </div>
+  </div>
+</section>
+
 
       <section className="info-section alt">
         <div className="info-content">

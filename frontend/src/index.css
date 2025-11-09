@@ -1,6 +1,10 @@
 html, body {
   height: 100%;
-  overscroll-behavior: auto; /* allow pull/bounce behavior */
-  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
-  /* background-color: #fff; */
+  overscroll-behavior: auto;
+  -webkit-overflow-scrolling: touch; 
+
+}
+body{
+  overflow-x: hidden;  
+  overflow-y: auto;    
 }
