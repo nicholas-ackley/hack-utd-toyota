@@ -1,0 +1,31 @@
+Libraries needed 
+frontend@0.0.0 C:\Users\nicho\Desktop\hack-utd-toyota\frontend
+├── @eslint/js@9.39.1
+├── @react-three/drei@10.7.6
+├── @react-three/fiber@9.4.0
+├── @types/node@24.10.0
+├── @types/react-dom@19.2.2
+├── @types/react@19.2.2
+├── @vitejs/plugin-react@5.1.0
+├── aos@2.3.4
+├── eslint-plugin-react-hooks@5.2.0
+├── eslint-plugin-react-refresh@0.4.24
+├── eslint@9.39.1
+├── framer-motion@12.23.24
+├── globals@16.5.0
+├── lucide-react@0.553.0
+├── react-dom@19.2.0
+├── react-icons@5.5.0
+├── react-router-dom@7.9.5
+├── react@19.2.0
+├── three@0.181.0
+├── typescript-eslint@8.46.3
+├── typescript@5.9.3
+└── vite@7.2.2
+
+
+npm i react-router-dom
+npm i react-icons
+npm i aos
+npm install lucide-react
+npm install motion
