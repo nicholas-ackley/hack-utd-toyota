@@ -1,0 +1,54 @@
+/* Remove all default spacing */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* Make sure the image takes up the full screen width & height */
+.homepage-container {
+  background: url('../images/supra-homepage.png') no-repeat center center fixed;
+  background-size: cover;  /* ensures the image covers full screen */
+  width: 100vw;            /* full viewport width */
+  height: 100vh;           /* full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Optional — make text pop */
+.homepage-title {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+/* Remove all default spacing */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* Make sure the image takes up the full screen width & height */
+.homepage-container {
+  background: url('../images/supra-homepage.png') no-repeat center center fixed;
+  background-size: cover;  /* ensures the image covers full screen */
+  width: 100vw;            /* full viewport width */
+  height: 100vh;           /* full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Optional — make text pop */
+.homepage-title {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
