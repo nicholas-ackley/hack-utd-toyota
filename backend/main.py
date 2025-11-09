@@ -1,12 +1,13 @@
-from fastapi import FastAPI
+from fastapi import FastAPI   # ✅ <-- you forgot this line
 from fastapi.middleware.cors import CORSMiddleware
-from routes import chat
+from routes import chat, recommendation  # ✅ include both route files
 
-app = FastAPI()
+app = FastAPI()  # now this works
 
+# ✅ Enable CORS for frontend access
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # or specify your frontend URL
+    allow_origins=["*"],  # use ["http://localhost:5173"] if you want to restrict it later
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -14,6 +15,7 @@ app.add_middleware(
 
 # ✅ Register routes
 app.include_router(chat.router, prefix="/api")
+app.include_router(recommendation.router, prefix="/api")  # 👈 add this one
 
 @app.get("/")
 def root():

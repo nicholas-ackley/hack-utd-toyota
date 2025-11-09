@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Toyota Corolla",
+    "price": 23000,
+    "acceleration": 8.5,
+    "fuelType": "Gasoline",
+    "bodyType": "Sedan",
+    "sizeCategory": "Compact",
+    "year": 2024,
+    "image": "https://www.toyota.com/corolla.jpg",
+    "description": "Efficient and affordable daily driver."
+  },
+  {
+    "name": "Toyota RAV4 Hybrid",
+    "price": 35000,
+    "acceleration": 7.2,
+    "fuelType": "Hybrid",
+    "bodyType": "SUV",
+    "sizeCategory": "SUV",
+    "year": 2024,
+    "image": "https://www.toyota.com/rav4hybrid.jpg",
+    "description": "Perfect balance of efficiency and utility."
+  },
+  {
+    "name": "Toyota Tacoma",
+    "price": 42000,
+    "acceleration": 7.8,
+    "fuelType": "Gasoline",
+    "bodyType": "Truck",
+    "sizeCategory": "Truck",
+    "year": 2024,
+    "image": "https://www.toyota.com/tacoma.jpg",
+    "description": "Built for adventure with off-road capability."
+  }
+]
