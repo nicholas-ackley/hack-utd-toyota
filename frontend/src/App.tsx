@@ -7,7 +7,7 @@ import Models from './pages/Models';
 import Preowned from './pages/Preowned';
 import ChatWidget from './components/chatbot/ChatWidget';
 import Matched from './pages/Matched';
-
+import Finance from './pages/Finance';
 function App() {
 
   const hasAddedRef = useRef(false);
@@ -29,6 +29,8 @@ function App() {
         <Route path="/models" element={<Models />} />
         <Route path="/preowned" element={<Preowned />} />
         <Route path="/matched" element={<Matched />} />  
+        <Route path="/finance" element={<Finance />} />  
+
       </Routes>
     </Router>
   </>

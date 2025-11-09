@@ -84,3 +84,76 @@
     display: none;
   }
 }
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 1.2rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.4s ease;
+  z-index: 1000;
+}
+
+/* Default (light theme) */
+.navbar.light {
+  background: transparent;
+  color: white;
+}
+.navbar.light.scrolled {
+  background: rgba(255, 255, 255, 0.9);
+  color: #1a1a1a;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Dark theme */
+.navbar.dark {
+  background: #1a1a1a;
+  color: white;
+  position: fixed; /* stays fixed relative to page */
+}
+.navbar.dark.scrolled {
+  background: #111;
+}
+
+/* Links */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+}
+.nav-links a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.navbar.light a:hover {
+  color: #d80015;
+}
+.navbar.dark a:hover {
+  color: #eb0a1e;
+}
+
+/* Icons */
+.nav-icons {
+  display: flex;
+  gap: 1.5rem;
+}
+.icon {
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.icon:hover {
+  color: #eb0a1e;
+}
+
+/* Logo */
+.logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.03em;
+}
