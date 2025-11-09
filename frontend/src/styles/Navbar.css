@@ -56,19 +56,19 @@
 }
 
 .nav-icons {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  margin-right: 5rem;
 }
 
 .icon {
   font-size: 1.25rem;
-  color: white;
+  gap: 3.5rem;
+  color: transparent;
   transition: color 0.3s ease, transform 0.2s ease;
+  padding: 1rem;
 }
 
 .navbar.scrolled .icon {
-  color: black;
+  color:grey;
 }
 
 .icon:hover {

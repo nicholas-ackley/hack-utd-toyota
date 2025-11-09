@@ -20,10 +20,9 @@
 }
 
 .hero-heading {
-  font-size: 4rem;
-  font-weight: 800;
+  font-size: 4.3rem;
+  font-weight: 670;
   margin-bottom: 1rem;
-  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .hero-subtext {
@@ -39,20 +38,26 @@
 }
 
 .outline-btn {
-  background: transparent;
-  border: 2px solid white;
+  background: red;
   color: white;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 550;
   padding: 0.8rem 2rem;
   border-radius: 30px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
-
-.outline-btn:hover {
-  background-color: white;
-  color: black;
+.outline-btn2 {
+  background: transparent;
+  color: white;
+  font-size: 1rem;
+  font-weight: 550;
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.outline-btn:hover, .outline-btn2:hover {
   transform: scale(1.05);
 }
 
@@ -93,4 +98,35 @@
   background-color: #fff;
   color: #777;
   font-size: 0.9rem;
+}
+
+
+:root {
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Roboto', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: #111;
+  background-color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+p {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+button {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: 0.3px;
 }

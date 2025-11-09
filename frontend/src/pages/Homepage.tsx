@@ -26,7 +26,7 @@ const Homepage: React.FC = () => {
           </p>
           <div className="hero-buttons">
             <button className="outline-btn">Explore Collection {'>'}</button>
-            <button className="outline-btn">Learn More</button>
+            <button className="outline-btn2">Learn More</button>
           </div>
         </div>
       </section>
