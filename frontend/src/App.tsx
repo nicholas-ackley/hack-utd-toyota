@@ -6,6 +6,7 @@ import Homepage from './pages/Homepage';
 import Models from './pages/Models';
 import Preowned from './pages/Preowned';
 import ChatWidget from './components/chatbot/ChatWidget';
+import Matched from './pages/Matched';
 
 function App() {
 
@@ -22,11 +23,12 @@ function App() {
     <>
     <ChatWidget />
     <Router>
-      <Navbar />
+      <Navbar/>
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/models" element={<Models />} />
         <Route path="/preowned" element={<Preowned />} />
+        <Route path="/matched" element={<Matched />} />  
       </Routes>
     </Router>
   </>

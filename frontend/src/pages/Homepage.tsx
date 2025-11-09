@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useNavigate } from "react-router-dom";
 import '../styles/Homepage.css';
 import Stock from '../images/stock.jpg';
 import { FaBolt, FaShieldAlt, FaMedal } from "react-icons/fa";
 import ChatWidget from '../components/chatbot/ChatWidget';
+import Matched from './Matched';
 const Homepage: React.FC = () => {
   const [offsetY, setOffsetY] = useState(0);
-
+  const navigate = useNavigate();
 
 
   // AOS LIBRARY USEFFECT
@@ -99,7 +101,7 @@ useEffect(() => {
 
     {/* Buttons now sit BELOW the image */}
     <div className="car-buttons">
-      <button className="car-btn">Match Me</button>
+      <button className="car-btn" onClick={()=> navigate("/matched")}>Match Me</button>
       <button className="car-btn outline">Compare</button>
     </div>
   </div>
