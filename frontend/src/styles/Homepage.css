@@ -121,12 +121,15 @@
 
 
 .info-section {
-  min-height: 80vh;
+  min-height: 40vh;
   background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: .15rem ;
+  padding: 10rem;
+  position: relative;
+  z-index: -1;
+  top:-100px ;
   
 }
 
@@ -156,8 +159,9 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 4rem 0;
+  padding: 4rem 10;
   background-color: #fff;
+  
 }
 
 .car-box {
@@ -166,6 +170,7 @@
   align-items: center;
   width: 80%;
   max-width: 1000px;
+
 }
 
 .stock-photo {
@@ -173,6 +178,7 @@
   height: auto;
   border-radius: 12px;
   object-fit: cover;
+
 }
 
 /* Button group BELOW image */
@@ -181,6 +187,8 @@
   display: flex;
   gap: 2rem;
   justify-content: center;
+  position: relative;
+  top: 40px;
 }
 
 /* Toyota-style buttons */

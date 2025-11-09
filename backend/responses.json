@@ -1,0 +1,15 @@
+[
+  {
+    "userId": "guest-3644",
+    "answers": {
+      "maxPrice": 38000,
+      "speedPreference": 8.3,
+      "sizePreference": "Midsize",
+      "householdSize": "Yes",
+      "commuteDistance": "No",
+      "fuelType": "Hybrid",
+      "bodyType": "Truck"
+    },
+    "timestamp": 1762686075704
+  }
+]

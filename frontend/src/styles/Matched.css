@@ -145,3 +145,129 @@
   font-size: 0.9rem;
   color: #666;
 }
+.matched-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #fafafa;
+  padding: 2rem;
+}
+
+.quiz-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  padding: 3rem 4rem;
+  max-width: 650px;
+  width: 100%;
+  text-align: center;
+}
+
+.question-number {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.question-text {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 2.2rem;
+  line-height: 1.4;
+}
+
+/* Binary button layout fix */
+.binary-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem; /* adds even space between Yes and No */
+  margin-top: 1.5rem;
+  margin-bottom: 2.5rem; /* pushes buttons away from "Next" */
+}
+
+.binary-btn {
+  background-color: #f5f5f5;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 0.9rem 2.2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.binary-btn:hover {
+  background-color: #eb0a1e;
+  color: white;
+  border-color: #eb0a1e;
+}
+
+.binary-btn.selected {
+  background-color: #eb0a1e;
+  color: white;
+  border-color: #eb0a1e;
+}
+
+/* Center Next button properly */
+.next-btn {
+  margin-top: 1rem;
+  padding: 0.8rem 2.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 40px;
+  background: #111;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.next-btn:hover {
+  background: #333;
+}
+
+/* Progress bar */
+.progress-bar {
+  height: 6px;
+  background: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 2.5rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #eb0a1e;
+  width: 0%;
+  transition: width 0.4s ease-in-out;
+}
+.choice-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.choice-btn {
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+}
+
+.choice-btn:hover {
+  background-color: #e5e5e5;
+}
+
+.choice-btn.selected {
+  background-color: #d21f3c;
+  color: white;
+  border-color: #b91c1c;
+}

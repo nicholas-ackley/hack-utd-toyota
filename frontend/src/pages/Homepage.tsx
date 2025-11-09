@@ -83,7 +83,7 @@ useEffect(() => {
   </div>
 
       </section>
-      <section className="info-section">
+      <section className="info-section" data-aos="fade-up" data-aos-delay="0">
         <div className="info-content">
           <h2>Find Your Toyota</h2>
           <p>
@@ -95,20 +95,20 @@ useEffect(() => {
         </div>
       </section>
 
-<section className="car-container">
+<section className="car-container"data-aos="fade-up" data-aos-delay="0">
   <div className="car-box">
     <img className="stock-photo" src={Stock} alt="Toyota Showcase" />
 
     {/* Buttons now sit BELOW the image */}
     <div className="car-buttons">
-      <button className="car-btn" onClick={()=> navigate("/matched")}>Match Me</button>
-      <button className="car-btn outline">Compare</button>
+      <button className="car-btn" data-aos="zoom-in" data-aos-delay="0" onClick={()=> navigate("/matched")}>Match Me</button>
+      <button className="car-btn outline"data-aos="zoom-in" data-aos-delay="0">Compare</button>
     </div>
   </div>
 </section>
 
 
-      <section className="info-section alt">
+      <section className="info-section alt"data-aos="fade-up" data-aos-delay="0">
         <div className="info-content">
           <h2>Safety You Can Count On</h2>
           <p>

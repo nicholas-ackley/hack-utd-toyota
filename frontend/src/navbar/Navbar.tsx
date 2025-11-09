@@ -20,13 +20,13 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className={`navbar ${scrolled ? "scrolled" : ""} ${isDark ? "dark" : "light"}`}>
-      <div className="nav-left">
-        <h2 className="logo">TOYOTA</h2>
-        <ul className="nav-links">
-          <li><Link to="/">Models</Link></li>
-          <li><Link to="/preowned">Pre-Owned</Link></li>
-          <li><Link to="/finance">Financing</Link></li>
-          <li><Link to="/about">About</Link></li>
+      <div className="nav-left" data-aos="fade-up" data-aos-delay="100">
+        <h2 className="logo"data-aos="fade-up" data-aos-delay="200">TOYOTA</h2>
+        <ul className="nav-links"data-aos="fade-up" data-aos-delay="300">
+          <li><Link to="/" data-aos="fade-up" data-aos-delay="400">Models</Link></li>
+          <li><Link to="/preowned"data-aos="fade-up" data-aos-delay="500">Pre-Owned</Link></li>
+          <li><Link to="/finance"data-aos="fade-up" data-aos-delay="600">Financing</Link></li>
+          <li><Link to="/about"data-aos="fade-up" data-aos-delay="700">About</Link></li>
         </ul>
       </div>
 
