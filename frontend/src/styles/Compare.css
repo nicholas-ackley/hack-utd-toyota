@@ -1,0 +1,70 @@
+.compare-container {
+  background: linear-gradient(to bottom, #ffffff, #f9f9f9);
+  color: #111;
+  min-height: 100vh;
+  padding: 6rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.compare-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 0.5rem;
+}
+
+.compare-subtitle {
+  color: #555;
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+}
+
+.compare-table {
+  width: 90%;
+  max-width: 900px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  background: #fff;
+}
+
+.compare-header,
+.compare-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.compare-header {
+  background: #f3f3f3;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.compare-cell {
+  padding: 1rem 1.5rem;
+  border-right: 1px solid #eee;
+}
+
+.compare-cell:last-child {
+  border-right: none;
+}
+
+.highlight {
+  background: #eb0a1e;
+  color: #fff;
+  font-weight: 700;
+}
+
+.compare-row:nth-child(even) .compare-cell:not(.highlight) {
+  background: #fafafa;
+}
+
+.compare-note {
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 2rem;
+}

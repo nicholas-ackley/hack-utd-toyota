@@ -55,7 +55,12 @@ useEffect(() => {
             Discover the latest in Toyota innovation and design.
           </p>
           <div className="hero-buttons">
-            <button className="outline-btn">Explore Collection {'>'}</button>
+            <button
+  className="outline-btn"
+  onClick={() => navigate("/preowned")}
+>
+  Explore Collection {'>'}
+</button>
             <button className="outline-btn2">Learn More</button>
           </div>
         </div>
@@ -129,12 +134,14 @@ useEffect(() => {
         >
           🚗 Match Me
         </button>
-        <button 
-          className="car-btn white" 
-          data-aos="zoom-in"
-        >
-          ⚙️ Compare Models
-        </button>
+<button 
+  className="car-btn white" 
+  data-aos="zoom-in"
+  onClick={() => navigate("/compare")}
+>
+  ⚙️ Compare Models
+</button>
+
       </div>
     </div>
 

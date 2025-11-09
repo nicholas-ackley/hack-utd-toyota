@@ -9,6 +9,7 @@ import ChatWidget from './components/chatbot/ChatWidget';
 import Matched from './pages/Matched';
 import Finance from './pages/Finance';
 import Results from './pages/Results';
+import Compare from './pages/Compare';
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -37,7 +38,8 @@ function AppContent() {
         <Route path="/preowned" element={<Preowned />} />
         <Route path="/matched" element={<Matched />} />  
         <Route path="/finance" element={<Finance />} />  
-        <Route path="/results" element={<Results />} /> {/* 👈 new route */}
+        <Route path="/results" element={<Results />} /> 
+              <Route path="/compare" element={<Compare />} /> 
       </Routes>
     </>
   );

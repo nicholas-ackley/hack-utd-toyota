@@ -12,6 +12,7 @@
   color: white;
   overflow: hidden;
   transition: background-position 0.2s ease-out;
+  margin-top: -80px;
 }
 
 .hero-content {
