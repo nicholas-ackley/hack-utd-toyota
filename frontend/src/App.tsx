@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import { seedToyotaMockCatalog } from './firebaseFunctions';
 import Navbar from './navbar/Navbar';
@@ -8,32 +8,57 @@ import Preowned from './pages/Preowned';
 import ChatWidget from './components/chatbot/ChatWidget';
 import Matched from './pages/Matched';
 import Finance from './pages/Finance';
-function App() {
+import Results from './pages/Results';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-  const hasAddedRef = useRef(false);
+function AppContent() {
+  const location = useLocation();
 
+  // ✅ Initialize AOS once
   useEffect(() => {
-    if (hasAddedRef.current) return;
-    hasAddedRef.current = true;
-    seedToyotaMockCatalog(); // runs once when the app loads - seeds all 18 Toyota cars
-  }, []);
+    AOS.init({
+      duration: 800,
+      once: false,
+      mirror: true,
+      easing: "ease-out-cubic",
+    });
 
+    // ✅ Refresh AOS whenever route changes
+    AOS.refresh();
+  }, [location]);
 
   return (
     <>
-    <ChatWidget />
-    <Router>
-      <Navbar/>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/models" element={<Models />} />
         <Route path="/preowned" element={<Preowned />} />
         <Route path="/matched" element={<Matched />} />  
         <Route path="/finance" element={<Finance />} />  
-
+        <Route path="/results" element={<Results />} /> {/* 👈 new route */}
       </Routes>
-    </Router>
-  </>
+    </>
+  );
+}
+
+function App() {
+  const hasAddedRef = useRef(false);
+
+  useEffect(() => {
+    if (hasAddedRef.current) return;
+    hasAddedRef.current = true;
+    seedToyotaMockCatalog(); // seeds mock data once
+  }, []);
+
+  return (
+    <>
+      <ChatWidget />
+      <Router>
+        <AppContent />
+      </Router>
+    </>
   );
 }
 

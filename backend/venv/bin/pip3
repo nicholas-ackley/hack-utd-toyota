@@ -1,4 +1,4 @@
-#!/Users/sashankmerugumuvvala/Documents/hack-utd-toyota/backend/venv/bin/python3
+#!/Users/nicholasackley/Desktop/hackutd/hack-utd-toyota/backend/venv/bin/python3.12
 # -*- coding: utf-8 -*-
 import re
 import sys

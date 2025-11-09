@@ -33,5 +33,43 @@
       "bodyType": "Van"
     },
     "timestamp": 1762701873181
+  },
+  {
+    "userId": "guest-1582",
+    "answers": {},
+    "timestamp": 1762703136087
+  },
+  {
+    "userId": "guest-3800",
+    "answers": {
+      "sizePreference": "SUV",
+      "householdSize": "Yes",
+      "commuteDistance": "No",
+      "fuelType": "Hybrid",
+      "bodyType": "Wagon"
+    },
+    "timestamp": 1762703844444
+  },
+  {
+    "userId": "guest-568",
+    "answers": {
+      "sizePreference": "SUV",
+      "householdSize": "Yes",
+      "commuteDistance": "No",
+      "fuelType": "Hybrid",
+      "bodyType": "Wagon"
+    },
+    "timestamp": 1762703850481
+  },
+  {
+    "userId": "guest-1291",
+    "answers": {
+      "sizePreference": "Midsize",
+      "householdSize": "Yes",
+      "commuteDistance": "Yes",
+      "fuelType": "Hybrid",
+      "bodyType": "Truck"
+    },
+    "timestamp": 1762703886286
   }
 ]

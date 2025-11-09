@@ -14,10 +14,14 @@ const Homepage: React.FC = () => {
 
 
   // AOS LIBRARY USEFFECT
+  
 useEffect(() => {
 
   window.scrollTo(0, 0);
 }, []);
+
+
+
 
 
   useEffect(() => {

@@ -7,26 +7,31 @@ const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  // detect scroll
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // Only apply scroll detection on homepage (or whichever page you want)
+  const scrollPage = ["/"]; // 👈 Only these routes get scroll effect
 
-  // detect route for dark pages
-  const darkPages = ["/finance", "/matched", "/compare"]; // 👈 add any routes that need black navbar
+  useEffect(() => {
+    if (scrollPage.includes(location.pathname.toLowerCase())) {
+      const handleScroll = () => setScrolled(window.scrollY > 10);
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      return () => window.removeEventListener("scroll", handleScroll);
+    } else {
+      setScrolled(true); // Always show fixed navbar on other pages
+    }
+  }, [location.pathname]);
+
+  const darkPages = ["/finance", "/matched", "/compare"];
   const isDark = darkPages.includes(location.pathname.toLowerCase());
 
   return (
     <nav className={`navbar ${scrolled ? "scrolled" : ""} ${isDark ? "dark" : "light"}`}>
-      <div className="nav-left" data-aos="fade-up" data-aos-delay="100">
-        <h2 className="logo"data-aos="fade-up" data-aos-delay="200">TOYOTA</h2>
-        <ul className="nav-links"data-aos="fade-up" data-aos-delay="300">
-          <li><Link to="/" data-aos="fade-up" data-aos-delay="400">Models</Link></li>
-          <li><Link to="/preowned"data-aos="fade-up" data-aos-delay="500">Pre-Owned</Link></li>
-          <li><Link to="/finance"data-aos="fade-up" data-aos-delay="600">Financing</Link></li>
-          <li><Link to="/about"data-aos="fade-up" data-aos-delay="700">About</Link></li>
+      <div className="nav-left">
+        <h2 className="logo">TOYOTA</h2>
+        <ul className="nav-links">
+          <li><Link to="/">Models</Link></li>
+          <li><Link to="/preowned">Pre-Owned</Link></li>
+          <li><Link to="/finance">Financing</Link></li>
+          <li><Link to="/about">About</Link></li>
         </ul>
       </div>
 

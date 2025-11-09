@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // ✅ import this
 import Navbar from "../navbar/Navbar";
 import "../styles/Matched.css";
 
@@ -15,6 +16,8 @@ interface Question {
 }
 
 const Matched: React.FC = () => {
+  const navigate = useNavigate(); // ✅ initialize navigation
+
   const questions: Question[] = [
     {
       id: 1,
@@ -80,57 +83,37 @@ const Matched: React.FC = () => {
   const q = questions[current];
   const currentValue = answers[q.key] ?? q.min ?? 0;
 
-  // ✅ Save answers to backend
-  const saveAnswers = async (answers: Record<string, number | string>) => {
-    try {
-      const response = await fetch("http://localhost:8000/api/save-answers", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          userId: "guest-" + Math.floor(Math.random() * 10000),
-          answers,
-        }),
-      });
-      const data = await response.json();
-      console.log("✅ Saved to backend:", data);
-    } catch (err) {
-      console.error("❌ Error saving answers:", err);
-    }
-  };
-
   const handleSelect = (value: string | number) => {
     setAnswers({ ...answers, [q.key]: value });
   };
 
-const handleNext = async () => {
-  if (current < questions.length - 1) {
-    setCurrent(current + 1);
-  } else {
-    console.log("✅ Final structured answers:", answers);
+  const handleNext = async () => {
+    if (current < questions.length - 1) {
+      setCurrent(current + 1);
+    } else {
+      console.log("✅ Final structured answers:", answers);
 
-    try {
-      const response = await fetch("http://localhost:8000/api/save-answers", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userId: "guest-" + Math.floor(Math.random() * 10000),
-          answers,
-        }),
-      });
+      try {
+        const response = await fetch("http://localhost:8000/api/get-recommendation", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            userId: "guest-" + Math.floor(Math.random() * 10000),
+            answers,
+          }),
+        });
 
-      const data = await response.json();
-      console.log("📤 Backend response:", data);
+        const data = await response.json();
+        console.log("📤 Backend response:", data);
 
-      alert("✅ Answers saved successfully!");
-    } catch (error) {
-      console.error("❌ Failed to save answers:", error);
-      alert("Something went wrong saving your answers.");
+        // ✅ Redirect to /results and pass the backend response
+        navigate("/results", { state: { result: data } });
+      } catch (error) {
+        console.error("❌ Failed to fetch recommendation:", error);
+        alert("Something went wrong fetching your car match.");
+      }
     }
-  }
-};
-
+  };
 
   return (
     <>
