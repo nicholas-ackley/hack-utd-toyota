@@ -7,6 +7,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  position: relative;
 }
 
 .compare-title {
@@ -14,12 +15,18 @@
   font-weight: 700;
   color: #111;
   margin-bottom: 0.5rem;
+  
+}
+.matched-container {
+  margin-top: 150px; /* pushes everything below the navbar */
 }
 
 .compare-subtitle {
   color: #555;
   font-size: 1.2rem;
   margin-bottom: 3rem;
+  position: relative;
+  
 }
 
 .compare-table {
