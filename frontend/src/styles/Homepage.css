@@ -1,10 +1,10 @@
-/* MAIN HOME PAGE */
-
 .homepage-container {
   height: 100vh;
   width: 100%;
-  background: url('../images/supra-homepage.png') no-repeat center center/cover;
+  background: url('../images/supra-homepage.png') no-repeat center center / cover;
   position: relative;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,7 +12,9 @@
   color: white;
   overflow: hidden;
   transition: background-position 0.2s ease-out;
-  margin-top: -80px;
+  margin: 0; /* remove the negative margin */
+  padding: 0;
+  z-index: 1;
 }
 
 .hero-content {
@@ -21,6 +23,7 @@
   max-width: 800px;
   padding: 2rem;
 }
+
 
 .hero-heading {
   font-size: 4.3rem;
