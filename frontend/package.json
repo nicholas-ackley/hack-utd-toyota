@@ -2,7 +2,7 @@
   "name": "frontend",
   "private": true,
   "version": "0.0.0",
-
+  "homepage": "https://nicholas-ackley.github.io/toyota-hackutd",
   "type": "module",
   "scripts": {
     "dev": "vite",
