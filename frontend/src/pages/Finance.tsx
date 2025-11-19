@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-import React from "react";
-// import Navbar from "../navbar/Navbar";
-=======
 import React, { useState, useEffect } from "react";
-import Navbar from "../navbar/Navbar";
->>>>>>> 889bbd61717950b28e917a3236cc09f178eaa7a0
+
+// import Navbar from "../navbar/Navbar";
 import "../styles/Finance.css";
 import { CheckCircle, Clock, Shield, TrendingDown } from "lucide-react";
 

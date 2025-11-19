@@ -32,7 +32,7 @@ const Preowned: React.FC = () => {
     { id: 8, name: "Toyota Sequoia Platinum", year: 2018, msrp: 48900, mileage: 52000, image: Sequoia, description: "Full-size SUV built for strength and luxury." },
   ];
 
-  const [cars, setCars] = useState<Car[]>(allCars);
+  // const [cars, setCars] = useState<Car[]>(allCars);
   const [filters, setFilters] = useState({ year: "all", maxPrice: "50000", maxMiles: "60000" });
 
   const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
