@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../navbar/Navbar";
+// import Navbar from "../navbar/Navbar";
 import "../styles/Finance.css";
 import { CheckCircle, Clock, Shield, TrendingDown } from "lucide-react";
 

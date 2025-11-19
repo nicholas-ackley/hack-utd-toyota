@@ -20,13 +20,14 @@ const Navbar: React.FC = () => {
     }
   }, [location.pathname]);
 
-  const darkPages = ["/finance", "/matched", "/compare,preowned", "/results"];
+  const darkPages = ["/finance", "/matched", "/compare", "/preowned", "/results"];
+
   const isDark = darkPages.includes(location.pathname.toLowerCase());
 
   return (
     <nav className={`navbar ${scrolled ? "scrolled" : ""} ${isDark ? "dark" : "light"}`}>
       <div className="nav-left" data-aos="fade-down">
-        <h2 className="logo" ata-aos="fade-down" >TOYOTA</h2>
+        <h2 className="logo" data-aos="fade-down" >TOYOTA</h2>
         <ul className="nav-links">
           <li><Link to="/">Models</Link></li>
           <li><Link to="/preowned">Pre-Owned</Link></li>
