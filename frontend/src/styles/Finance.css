@@ -25,10 +25,12 @@
   border: none;
   border-radius: 9999px;
   font-weight: 600;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 .cta-btn:hover {
   background-color: #c00818;
+  transform: translateY(-2px);
 }
 
 /* Benefits */
@@ -48,10 +50,11 @@
   border-radius: 16px;
   padding: 2rem;
   text-align: left;
-  transition: box-shadow 0.3s;
+  transition: box-shadow 0.3s, transform 0.2s;
 }
 .benefit-card:hover {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
 }
 .benefit-icon {
   background: #fff5f5;
@@ -79,6 +82,42 @@
 .calc-right {
   background-color: #eb0a1e;
   color: white;
+}
+.calc-left h2 {
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+.calc-slider {
+  margin-bottom: 2rem;
+}
+.calc-slider label {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.calc-slider input[type="range"] {
+  width: 100%;
+  -webkit-appearance: none;
+  height: 6px;
+  border-radius: 5px;
+  background: #e5e7eb;
+  outline: none;
+  transition: background 0.2s;
+}
+.calc-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #eb0a1e;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.calc-slider input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  background: #c00818;
 }
 .calc-payment {
   font-size: 3rem;
@@ -125,6 +164,11 @@
   border-radius: 16px;
   padding: 2rem;
   text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.offer-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 .offer-card.white {
   background: white;
@@ -155,4 +199,14 @@
   border-radius: 9999px;
   font-size: 0.8rem;
   font-weight: 600;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .finance-hero h1 {
+    font-size: 2.5rem;
+  }
+  .calc-payment {
+    font-size: 2.2rem;
+  }
 }
