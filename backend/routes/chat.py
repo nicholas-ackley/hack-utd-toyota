@@ -5,14 +5,14 @@ from dotenv import load_dotenv
 from pathlib import Path
 import time
 
-# ✅ Load environment
+
 env_path = Path(__file__).resolve().parents[1] / ".env"
 load_dotenv(dotenv_path=env_path)
 
-# ✅ Initialize clients
+
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-# ✅ Toyota API config
+
 TOYOTA_API_URL = "https://car-api2.p.rapidapi.com/api/models"
 HEADERS = {
     "x-rapidapi-key": os.getenv("TOYOTA_API_KEY"),
@@ -26,7 +26,6 @@ async def chat(request: Request):
     data = await request.json()
     user_msg = data.get("message", "").strip().lower()
 
-    # --- 1️⃣ Fetch Toyota data if relevant ---
     car_info = ""
     if "toyota" in user_msg or "car" in user_msg:
         try:
@@ -87,23 +86,22 @@ async def save_answers(request: Request):
         except (FileNotFoundError, json.JSONDecodeError):
             responses = []
 
-        # Create new response entry
+
         new_response = {
             "userId": user_id,
             "answers": answers,
-            "timestamp": int(time.time() * 1000)  # Current timestamp in milliseconds
+            "timestamp": int(time.time() * 1000)  
         }
 
-        # Add to responses array
         responses.append(new_response)
 
-        # Write back to file
+ 
         with open(responses_file, 'w') as f:
             json.dump(responses, f, indent=2)
 
-        print("📤 Saved answers from user:", user_id)
-        print("📊 Answers:", answers)
-        print("💾 Total responses saved:", len(responses))
+        print("Saved answers from user:", user_id)
+        print("Answers:", answers)
+        print("Total responses saved:", len(responses))
 
         return {
             "success": True,
@@ -112,7 +110,7 @@ async def save_answers(request: Request):
             "totalResponses": len(responses)
         }
     except Exception as e:
-        print("❌ Error saving answers:", str(e))
+        print("Error saving answers:", str(e))
         return {
             "success": False,
             "error": str(e)
